@@ -22,26 +22,6 @@ describe "Bundler" do
       expect(@gemfile_text =~ /source ['"]https:\/\/rubygems\.org['"]/).not_to eq(nil)
     end
 
-    # http://bundler.io/v1.3/gemfile.html
-    it "should list the hashie gem without specifying a version" do
-      expect(@gemfile_text =~ /gem ['"]hashie['"]/).not_to eq(nil)
-    end
-
-    # http://bundler.io/v1.3/gemfile.html
-    it "should list the sinatra gem with the specific version 1.4.4" do
-      expect(@gemfile_text =~ /gem ['"]sinatra['"], ?['"]v?1\.4\.4['"]/).not_to eq(nil)
-    end
-
-    # http://robots.thoughtbot.com/post/2508037841/rubys-pessimistic-operator
-    it "should list the octokit gem specifying version 2.0 with a twiddle-wakka" do
-      expect(@gemfile_text =~ /gem ['"]octokit['"], ?['"]~> ?2\.0['"]/).not_to eq(nil)
-    end
-
-    # http://bundler.io/git.html
-    it "should list the awesome_print gem specifying a remote git repository (use github)" do
-      expect(@gemfile_text =~ /gem ['"]awesome_print['"], ?(git:|:git ?=>) ?['"]git@github\.com:awesome\-print\/awesome_print\.git['"]/).not_to eq(nil)
-    end
-
     describe "groups" do
       after :each do
         system("rm .bundle/config")
@@ -102,3 +82,23 @@ describe "Bundler" do
     end
   end
 end
+
+ # http://bundler.io/v1.3/gemfile.html
+    it "should list the hashie gem without specifying a version" do
+      expect(@gemfile_text =~ /gem ['"]hashie['"]/).not_to eq(nil)
+    end
+
+    # http://bundler.io/v1.3/gemfile.html
+    it "should list the sinatra gem with the specific version 1.4.4" do
+      expect(@gemfile_text =~ /gem ['"]sinatra['"], ?['"]v?1\.4\.4['"]/).not_to eq(nil)
+    end
+
+    # http://robots.thoughtbot.com/post/2508037841/rubys-pessimistic-operator
+    it "should list the octokit gem specifying version 2.0 with a twiddle-wakka" do
+      expect(@gemfile_text =~ /gem ['"]octokit['"], ?['"]~> ?2\.0['"]/).not_to eq(nil)
+    end
+
+    # http://bundler.io/git.html
+    it "should list the awesome_print gem specifying a remote git repository (use github)" do
+      expect(@gemfile_text =~ /gem ['"]awesome_print['"], ?(git:|:git ?=>) ?['"]git@github\.com:awesome\-print\/awesome_print\.git['"]/).not_to eq(nil)
+    end
